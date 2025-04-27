@@ -1,3 +1,5 @@
+const BACKEND_URL = 'https://washerman-backend.onrender.com';
+
 // Auto-redirect to dashboard if already logged in (only on login or register pages)
 document.addEventListener('DOMContentLoaded', function() {
     // Only redirect if on index.html or register.html
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const role = document.getElementById('role').value;
   
       try {
-        const response = await fetch('/api/login', {
+        const response = await fetch(`${BACKEND_URL}/api/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password, role })
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const role = document.getElementById('regRole').value;
   
       try {
-        const response = await fetch('/api/register', {
+        const response = await fetch(`${BACKEND_URL}/api/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password, role })
@@ -101,4 +103,3 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.removeItem('role');
     window.location.href = 'index.html';
   }
-  
